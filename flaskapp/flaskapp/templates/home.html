@@ -27,6 +27,12 @@
                   <p>{{session['lastname']}}</p>
 		  <h3>Email</h3>
                   <p>{{session['email']}}</p>
+		  <div class="w3-container w3-gray">
+		  <form action="{{ url_for('home') }}" method="post">
+		   <input id="" name="username" type="text" placeholder="Enter Your Username" class="w3-input w3-border"/></br></br>
+
+		  </form>
+		  </div>
             </div>
             <p class="bottom">Click here to <a class="bottom" href="{{url_for('logout')}}">Logout</a>.</p>
           </div>

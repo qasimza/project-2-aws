@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, g, redirect, url_for, session
 from collections import Counter
 import sqlite3
@@ -8,6 +9,9 @@ app.secret_key = 'super secret key'
 
 DATABASE = '/var/www/html/flaskapp/database.db'
 
+UPLOAD_FOLDER = '/home/ubuntu/project-2-aws-file-uploads'
+
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app.config.from_object(__name__)
 
 def connect_to_database():
@@ -95,13 +99,26 @@ def register():
         msg = 'Please fill out the form !'
     return render_template('registration.html', msg = msg)
 
-@app.route('/countme/<input_str>')
-def count_me(input_str):
-    input_counter = Counter(input_str)
-    response = []
-    for letter, count in input_counter.most_common():
-        response.append('"{}": {}'.format(letter, count))
-    return '<br>'.join(response)
+@app.route('/home', methods==['GET', 'POST'])
+def home():
+    def count_me(input_str):
+        input_counter = Counter(input_str)
+        response = []
+        for letter, count in input_counter.most_common():
+            response.append('"{}": {}'.format(letter, count))
+        session['count'] = response
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('download_file', name=filename))
 
 @app.route("/viewdb")
 def viewdb():
