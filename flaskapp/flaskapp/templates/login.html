@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Login </title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  
+    </head>
+     <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Project: AWS</b></h1>
+    <h6>The CSS for this assignment is sourced from<span class="w3-tag">W3 Schools</span></h6>
+    <body></br></br>
+        <div align="center">
+          <div align="center" class="w3-white w3-margin">
+             <div class="w3-container w3-padding w3-black">
+                <h1>Login</h1>
+             </div></br></br></br>
+               <div class="w3-container w3-white">            
+                <form action="{{ url_for('login') }}" method="post">
+                  <div>{{ msg }}</div>
+                    <input id="username" name="username" type="text" placeholder="Enter Your Username" class="w3-input w3-border"/></br></br>
+                    <input id="password" name="password" type="password" placeholder="Enter Your Password" class="w3-input w3-border"/></br></br></br>
+                    <input type="submit" class="w3-button w3-block w3-red" value="Sign In"></br></br>
+                </form>
+            </div>
+            <p class="bottom">Don't have an account?  <a class="bottom" href="{{url_for('register')}}"> Sign Up here</a></p>
+          </div>
+        </div>
+    </body>
+</html>
+

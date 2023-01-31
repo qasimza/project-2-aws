@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Register </title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+     <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Project: AWS</b></h1>
+    <h6>The CSS for this assignment is sourced from<span class="w3-tag">W3 Schools</span></h6>
+  </header>
+    <body></br></br>
+        <div align="center"> 
+          <div align="center" class="w3-white w3-margin">
+             <div class="w3-container w3-padding w3-black">
+                <h1>Register</h1>
+             </div></br></br></br>
+            <div class="w3-container w3-white">
+                <form action="{{ url_for('register') }}" method="post">
+                  <div>{{ msg }}</div>
+                    <input id="username" name="username" type="text" placeholder="Enter Your Username" class="w3-input w3-border"/></br></br>
+                    <input id="password" name="password" type="password" placeholder="Enter Your Password" class="w3-input w3-border"/></br></br>
+                    <input id="firstname" name="firstname" type="text" placeholder="Enter Your First Name" class="w3-input w3-border"/></br></br>
+		    <input id="last" name="username" type="text" placeholder="Enter Your Last Name" class="w3-input w3-border"/></br></br>
+		    <input id="email" name="email" type="email" placeholder="Enter Your Email ID" class="w3-input w3-border"/></br></br>
+                    <input type="submit" class="w3-button w3-block w3-red" value="Sign Up"></br>
+                </form>
+            </div>
+            <p class="bottom">Already have an account?  <a class="bottom" href="{{url_for('login')}}"> Sign In here</a></p>
+          </div>
+        </div>
+    </body>
+</html>

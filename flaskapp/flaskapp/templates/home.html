@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Home </title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+     <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Project: AWS</b></h1>
+    <h6>The CSS for this assignment is sourced from<span class="w3-tag">W3 Schools</span></h6>
+    <body></br></br>
+        <div align="center">
+          <div align="center" class="w3-white w3-margin">
+             <div class="w3-container w3-padding w3-black">
+		     <h1 class="word">User Information</h1>
+             </div></br></br></br>
+	     <div class="w3-container w3-white">
+                  <div>{{ msg }}</div>
+		  <h3>Username</h3>
+		  <p>{{session['username']}}</p>
+		  <h3>First Name</h3>
+                  <p>{{session['firstname']}}</p>
+		  <h3>Last Name</h3>
+                  <p>{{session['lastname']}}</p>
+		  <h3>Email</h3>
+                  <p>{{session['email']}}</p>
+            </div>
+            <p class="bottom">Click here to <a class="bottom" href="{{url_for('logout')}}">Logout</a>.</p>
+          </div>
+        </div>
+    </body>
+</html>
+
